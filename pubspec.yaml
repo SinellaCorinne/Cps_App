@@ -42,16 +42,6 @@ dependencies:
   pdf: ^3.11.1
   printing: ^5.13.2
   
-  # Local Storage (Offline-First)
-  sqflite: ^2.3.3+1
-  path_provider: ^2.1.4
-  
-  # Image Picker
-  image_picker: ^1.1.2
-  
-  # Connectivity Check
-  connectivity_plus: ^6.0.5
-  
   # Icons
   flutter_svg: ^2.0.10+1
   

@@ -71,56 +71,20 @@ class _StepSynthesisState extends State<StepSynthesis> {
                 ],
               ),
               const SizedBox(height: 8),
-              Stack(
-                children: [
-                  TextFormField(
-                    controller: _observationsController,
-                    decoration: InputDecoration(
-                      hintText: 'Décrivez la situation générale de l\'usager, ses conditions de vie, son contexte familial...',
-                      contentPadding: const EdgeInsets.all(20),
-                      suffixIcon: Padding(
-                        padding: const EdgeInsets.only(right: 8),
-                        child: IconButton(
-                          icon: Container(
-                            padding: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: AppTheme.accentOrange,
-                              shape: BoxShape.circle,
-                            ),
-                            child: const Icon(
-                              Icons.mic,
-                              color: Colors.white,
-                              size: 20,
-                            ),
-                          ),
-                          onPressed: () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Row(
-                                  children: [
-                                    Icon(Icons.mic, color: Colors.white),
-                                    SizedBox(width: 12),
-                                    Text('🎙️ Dictée vocale en cours d\'intégration...'),
-                                  ],
-                                ),
-                                backgroundColor: AppTheme.accentOrange,
-                                duration: Duration(seconds: 2),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                    maxLines: 8,
-                    textCapitalization: TextCapitalization.sentences,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Les observations sont obligatoires';
-                      }
-                      return null;
-                    },
-                  ),
-                ],
+              TextFormField(
+                controller: _observationsController,
+                decoration: const InputDecoration(
+                  hintText: 'Décrivez la situation générale de l\'usager, ses conditions de vie, son contexte familial...',
+                  contentPadding: EdgeInsets.all(20),
+                ),
+                maxLines: 8,
+                textCapitalization: TextCapitalization.sentences,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Les observations sont obligatoires';
+                  }
+                  return null;
+                },
               ),
             ],
           ),
@@ -347,58 +311,12 @@ class _StepSynthesisState extends State<StepSynthesis> {
           const SizedBox(height: 24),
           
           // Boutons de navigation
-          Row(
-            children: [
-              Expanded(
-                child: OutlinedButton.icon(
-                  onPressed: () {
-                    Provider.of<SurveyProvider>(context, listen: false).previousStep();
-                  },
-                  icon: const Icon(Icons.arrow_back),
-                  label: const Text('Retour'),
-                ),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: ElevatedButton.icon(
-                  onPressed: () async {
-                    if (_formKey.currentState!.validate()) {
-                      // Sauvegarder
-                      final provider = Provider.of<SurveyProvider>(context, listen: false);
-                      provider.updateSynthesis(
-                        observationsGenerales: _observationsController.text,
-                        recommandations: _recommandationsController.text,
-                        typeAide: _typeAideController.text,
-                      );
-                      
-                      await provider.saveSurveyLocally();
-                      
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Row(
-                            children: [
-                              Icon(Icons.check_circle, color: Colors.white),
-                              SizedBox(width: 12),
-                              Text('✅ Enquête sauvegardée localement'),
-                            ],
-                          ),
-                          backgroundColor: AppTheme.successGreen,
-                          duration: Duration(seconds: 3),
-                        ),
-                      );
-                      
-                      // Retour à l'accueil
-                      Navigator.pop(context);
-                    }
-                  },
-                  icon: const Icon(Icons.save),
-                  label: const Text('Sauvegarder'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppTheme.successGreen,
-                  ),
-                ),
-              ),
-            ],
+          OutlinedButton.icon(
+            onPressed: () {
+              Provider.of<SurveyProvider>(context, listen: false).previousStep();
+            },
+            icon: const Icon(Icons.arrow_back),
+            label: const Text('Retour'),
           ),
           
           const SizedBox(height: 20),

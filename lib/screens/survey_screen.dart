@@ -16,48 +16,7 @@ class SurveyScreen extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: const Text('Rapport d\'Enquête Sociale'),
-            actions: [
-              // Indicateur de mode hors ligne
-              Container(
-                margin: const EdgeInsets.only(right: 16),
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration: BoxDecoration(
-                  color: provider.isOffline 
-                      ? AppTheme.warningYellow.withOpacity(0.2)
-                      : AppTheme.successGreen.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(
-                    color: provider.isOffline 
-                        ? AppTheme.warningYellow
-                        : AppTheme.successGreen,
-                    width: 1.5,
-                  ),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      provider.isOffline ? Icons.cloud_off : Icons.cloud_done,
-                      size: 16,
-                      color: provider.isOffline 
-                          ? AppTheme.warningYellow
-                          : AppTheme.successGreen,
-                    ),
-                    const SizedBox(width: 6),
-                    Text(
-                      provider.isOffline ? 'Hors-ligne' : 'En ligne',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: provider.isOffline 
-                            ? AppTheme.warningYellow
-                            : AppTheme.successGreen,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+            actions: const [],
           ),
           body: Column(
             children: [

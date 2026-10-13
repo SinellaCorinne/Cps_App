@@ -4,11 +4,8 @@ import 'package:app_cps/models/survey_model.dart';
 class SurveyProvider extends ChangeNotifier {
   SurveyModel _currentSurvey = SurveyModel();
   int _currentStep = 0;
-  bool _isOffline = true; // Mode hors ligne par défaut
-  
   SurveyModel get currentSurvey => _currentSurvey;
   int get currentStep => _currentStep;
-  bool get isOffline => _isOffline;
   
   void setCurrentStep(int step) {
     _currentStep = step;
@@ -42,11 +39,6 @@ class SurveyProvider extends ChangeNotifier {
   
   void loadSampleData() {
     _currentSurvey = SurveyModel.sample();
-    notifyListeners();
-  }
-  
-  void toggleOfflineMode() {
-    _isOffline = !_isOffline;
     notifyListeners();
   }
   
@@ -128,20 +120,4 @@ class SurveyProvider extends ChangeNotifier {
     notifyListeners();
   }
   
-  Future<void> saveSurveyLocally() async {
-    // Simulation de sauvegarde locale (SQLite)
-    _currentSurvey.id = 'ENQ-${DateTime.now().millisecondsSinceEpoch}';
-    _currentSurvey.status = 'brouillon';
-    await Future.delayed(const Duration(milliseconds: 500));
-    notifyListeners();
-  }
-  
-  Future<bool> syncSurvey() async {
-    // Simulation de synchronisation avec le serveur
-    await Future.delayed(const Duration(seconds: 2));
-    _currentSurvey.isSynced = true;
-    _currentSurvey.status = 'validé';
-    notifyListeners();
-    return true;
-  }
 }

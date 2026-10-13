@@ -63,54 +63,22 @@ class _StepIdentityState extends State<StepIdentity> {
           
           // Photo de profil
           Center(
-            child: Stack(
-              children: [
-                Container(
-                  width: 120,
-                  height: 120,
-                  decoration: BoxDecoration(
-                    color: AppTheme.primaryGreen.withOpacity(0.1),
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: AppTheme.primaryGreen,
-                      width: 3,
-                    ),
-                  ),
-                  child: const Icon(
-                    Icons.person,
-                    size: 60,
-                    color: AppTheme.primaryGreen,
-                  ),
+            child: Container(
+              width: 120,
+              height: 120,
+              decoration: BoxDecoration(
+                color: AppTheme.primaryGreen.withOpacity(0.1),
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: AppTheme.primaryGreen,
+                  width: 3,
                 ),
-                Positioned(
-                  bottom: 0,
-                  right: 0,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: AppTheme.accentOrange,
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    child: IconButton(
-                      icon: const Icon(Icons.camera_alt, color: Colors.white),
-                      onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('📸 Fonctionnalité caméra disponible en production'),
-                            duration: Duration(seconds: 2),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ),
-              ],
+              ),
+              child: const Icon(
+                Icons.person,
+                size: 60,
+                color: AppTheme.primaryGreen,
+              ),
             ),
           ),
           
@@ -278,23 +246,6 @@ class _StepIdentityState extends State<StepIdentity> {
           ),
           
           const SizedBox(height: 16),
-          
-          // Bouton GPS
-          OutlinedButton.icon(
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('📍 Coordonnées GPS enregistrées'),
-                  duration: Duration(seconds: 2),
-                ),
-              );
-            },
-            icon: const Icon(Icons.my_location),
-            label: const Text('Capturer Position GPS'),
-            style: OutlinedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-            ),
-          ),
           
           const SizedBox(height: 32),
           

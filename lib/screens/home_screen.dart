@@ -430,15 +430,15 @@ class _ActionSection extends StatelessWidget {
         ),
         const SizedBox(height: 14),
         // Bouton principal
-        _PrimaryActionCard(context),
+        _primaryActionCard(context),
         const SizedBox(height: 12),
         // Bouton démo
-        _DemoActionCard(context),
+        _demoActionCard(context),
       ],
     );
   }
 
-  Widget _PrimaryActionCard(BuildContext context) {
+  Widget _primaryActionCard(BuildContext context) {
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -508,7 +508,7 @@ class _ActionSection extends StatelessWidget {
     );
   }
 
-  Widget _DemoActionCard(BuildContext context) {
+  Widget _demoActionCard(BuildContext context) {
     return Material(
       color: Colors.transparent,
       child: InkWell(

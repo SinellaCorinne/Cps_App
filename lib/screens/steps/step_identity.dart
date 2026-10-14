@@ -338,7 +338,6 @@ class _Field extends StatelessWidget {
   final TextInputType? keyboard;
   final TextCapitalization capitalization;
   final String? Function(String?)? validator;
-  final int maxLines;
 
   const _Field({
     required this.controller,
@@ -349,7 +348,6 @@ class _Field extends StatelessWidget {
     this.keyboard,
     this.capitalization = TextCapitalization.none,
     this.validator,
-    this.maxLines = 1,
   });
 
   @override
@@ -358,7 +356,7 @@ class _Field extends StatelessWidget {
       controller: controller,
       keyboardType: keyboard,
       textCapitalization: capitalization,
-      maxLines: maxLines,
+      maxLines: 1,
       validator: validator,
       decoration: InputDecoration(
         labelText: label,
